@@ -1,0 +1,40 @@
+Table hero_mobile_legend{
+  id_hero integer [primary key]
+  nama_hero varchar
+  jumlah_skin integer
+}
+
+Table ket_hero{
+  skin integer [primary key]
+  hero varchar
+  
+}
+Table tipe{
+  tipe_hero varchar [primary key]
+}
+Table harga{
+  harga_gold integer
+  harga_diamond integer
+}
+
+Ref {
+  hero_mobile_legend.id_hero < ket_hero.skin
+}
+
+Ref{
+  ket_hero.skin < harga.harga_diamond
+}
+
+Ref {
+  ket_hero.hero < harga.harga_gold
+}
+
+Ref {
+  ket_hero.hero < harga.harga_diamond
+}
+Ref {
+  hero_mobile_legend.nama_hero < tipe.tipe_hero
+}
+Ref{
+  hero_mobile_legend.nama_hero < ket_hero.hero
+}
